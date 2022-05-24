@@ -8,11 +8,21 @@ class OrderProductInline(admin.TabularInline):
     extra = 0
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display= ['order_number', 'full_name', 'phone', 'email', 'city', 'order_total', 'tax', 'status', 'is_ordered','created_at']
-    list_filter= ['status','is_ordered']
+    list_display= ['order_number', 'full_name', 'phone', 'email', 'city', 'order_total', 'tax', 'is_ordered','created_at']
+    list_filter= ['is_ordered','created_at']
     search_fields=['order_number','first_name','last_name','phone','email']
     list_per_page= 20
     inlines = [OrderProductInline]
-admin.site.register(Payment)
+class PaymentAdmin(admin.ModelAdmin):
+    list_display= ['payment_id', 'user', 'amount_paid', 'status']
+    list_filter= ['user']
+    list_per_page= 20
+
+class OrderProductAdmin(admin.ModelAdmin):
+    list_display= ['product','payment','user', 'created_at']
+    list_filter= ['user']
+    list_per_page= 20
+
+admin.site.register(Payment, PaymentAdmin)
 admin.site.register(Order, OrderAdmin)
-admin.site.register(OrderProduct)
+admin.site.register(OrderProduct,OrderProductAdmin)

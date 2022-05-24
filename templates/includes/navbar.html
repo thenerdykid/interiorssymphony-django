@@ -1,5 +1,5 @@
 {% load static %}
-<header class="section-header">
+<header class="section-header" >
 
 
 <section class="header-main border-bottom">
@@ -7,11 +7,11 @@
 <div class="row align-items-center">
   <div class="col-lg-2 col-md-3 col-6">
     <a href="{% url 'home' %}" class="brand-wrap">
-      <img class="logo" src="{% static './images/logo.png' %}">
+      <img class="logo" src="{% static './images/ae.png' %}">
     </a> <!-- brand-wrap.// -->
   </div>
-  <div class="col-lg col-sm col-md col-6 flex-grow-0">
-    <div class="category-wrap dropdown d-inline-block float-right">
+  <!-- <div class="col-lg col-sm col-md col-6 flex-grow-0">
+     <div class="category-wrap dropdown d-inline-block float-right">
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-bars"></i> All categories
       </button>
@@ -21,9 +21,11 @@
         <a class="dropdown-item" href="{{category.get_url}}">{{ category.category_name}} </a>
         {% endfor %}
       </div>
-    </div>  <!-- category-wrap.// -->
-  </div> <!-- col.// -->
-  <a href="{% url 'store' %}" class="btn btn-outline-primary">Store</a>
+    </div>
+  </div> -->
+  <div class="col-lg col-sm col-md col-6 flex-grow-0">
+  <a href="{% url 'store' %}" class="btn btn-primary" style="width:180px">Our Products</a>
+  </div>
   <div class="col-lg  col-md-6 col-sm-12 col">
     <form action="{% url 'search' %}" class="search" method="GET">
       <div class="input-group w-100">
@@ -43,16 +45,16 @@
           <div class="widget-header">
             <small class="title text-muted">Welcome Guest!</small>
             <div>
-              <a href="{% url 'login' %}">Login</a> <span class="dark-transp"> | </span>
-              <a href="{% url 'register' %}"> Register</a>
+              <a id="ahover" href="{% url 'login' %}">Login</a> <span class="dark-transp"> | </span>
+              <a id="ahover" href="{% url 'register' %}"> Register</a>
             </div>
           </div>
           {% else %}
           <div class="widget-header">
             <small class="title text-muted">Welcome {{user.first_name | capfirst}}!</small>
             <div>
-              <a href="{% url 'dashboard' %}">Dashboard</a> <span class="dark-transp"> | </span>
-              <a href="{% url 'logout' %}"> Logout</a>
+              <a id="ahover" href="{% url 'dashboard' %}">Dashboard</a> <span class="dark-transp"> | </span>
+              <a id="ahover" href="{% url 'logout' %}"> Logout</a>
             </div>
           </div>
           {% endif %}
